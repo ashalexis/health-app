@@ -1,6 +1,7 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { Button, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import { Button } from "../components/Button";
 
 export const HomeScreen = ({ navigation }) => {
   return (

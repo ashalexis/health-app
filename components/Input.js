@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
-// params: title - string, onChangeText - function, unit - string (cm/kg)
+// props: title - string, onChangeText - function, unit - string (cm/kg)
 
 export const Input = props => {
   return (

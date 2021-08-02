@@ -1,7 +1,16 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { Button, Keyboard, StyleSheet, Switch, Text, View } from "react-native";
+import {
+  Dimensions,
+  ScrollView,
+  StyleSheet,
+  Switch,
+  Text,
+  View,
+} from "react-native";
 import { Input } from "../components/Input";
+import { Button } from "../components/Button";
+import { InfoTable } from "../components/InfoTable";
 
 export const BodyFatScreen = ({ navigation }) => {
   //false is male, true is female
@@ -13,11 +22,21 @@ export const BodyFatScreen = ({ navigation }) => {
   const [hip, setHip] = React.useState(null);
   const [bodyFat, setBodyFat] = React.useState(null);
 
+  const tableHead = ["Description", "Women", "Men"];
+  const tableData = [
+    ["Essential fat", "10 - 13%", "2 - 5%"],
+    ["Athletes", "14 - 20%", "6 - 13%"],
+    ["Fitness", "21 - 24%", "14- 17%"],
+    ["Average", "25 - 31%", "18 - 25%"],
+    ["Obese", "32+%", "25+%"],
+  ];
+
+  const tableWidth = Dimensions.get("window").width * 0.9;
+
   const calculate = () => {
     Keyboard.dismiss;
 
     let intHeight = parseInt(height);
-    let intWeight = parseInt(weight);
     let intNeck = parseInt(neck);
     let intWaist = parseInt(waist);
     let bodyfat;
@@ -49,78 +68,79 @@ export const BodyFatScreen = ({ navigation }) => {
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text style={styles.title}>Calculate your Body Fat!</Text>
 
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          marginBottom: 20,
-        }}
-      >
-        <Text>Male</Text>
-        <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={gender ? "#f5dd4b" : "#f4f3f4"}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={toggleSwitch}
-          value={gender}
-        />
-        <Text>Female</Text>
-      </View>
+      <ScrollView>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            marginBottom: 20,
+          }}
+        >
+          <Text>Male</Text>
+          <Switch
+            trackColor={{ false: "#767577", true: "#81b0ff" }}
+            thumbColor={gender ? "#f5dd4b" : "#f4f3f4"}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={toggleSwitch}
+            value={gender}
+          />
+          <Text>Female</Text>
+        </View>
 
-      <Input
-        title="Height in cm:"
-        value={height}
-        onChangeText={text => setHeight(text)}
-        unit="cm"
-      />
-
-      <Input
-        title="Weight in kg:"
-        value={weight}
-        onChangeText={text => setWeight(text)}
-        unit="cm"
-      />
-
-      <Input
-        title="Neck circumference in cm:"
-        value={neck}
-        onChangeText={text => setNeck(text)}
-        unit="cm"
-      />
-
-      <Input
-        title="Waist circumference in cm:"
-        value={waist}
-        onChangeText={text => setWaist(text)}
-        unit="cm"
-      />
-
-      {gender && (
         <Input
-          title="Hip circumference in cm:"
-          value={hip}
-          onChangeText={text => setHip(text)}
+          title="Height in cm:"
+          value={height}
+          onChangeText={text => setHeight(text)}
           unit="cm"
         />
-      )}
 
-      <Button title="Calculate Body Fat %" onPress={() => calculate()} />
-      <Text style={{ marginTop: 20, fontSize: 18 }}>
-        Your body fat percentage is:{" "}
-        <Text style={{ fontWeight: "bold" }}>{bodyFat}</Text>
-      </Text>
+        <Input
+          title="Weight in kg:"
+          value={weight}
+          onChangeText={text => setWeight(text)}
+          unit="cm"
+        />
+
+        <Input
+          title="Neck circumference in cm:"
+          value={neck}
+          onChangeText={text => setNeck(text)}
+          unit="cm"
+        />
+
+        <Input
+          title="Waist circumference in cm:"
+          value={waist}
+          onChangeText={text => setWaist(text)}
+          unit="cm"
+        />
+
+        {gender && (
+          <Input
+            title="Hip circumference in cm:"
+            value={hip}
+            onChangeText={text => setHip(text)}
+            unit="cm"
+          />
+        )}
+
+        <Button title="Calculate Body Fat %" onPress={() => calculate()} />
+        <Text style={styles.resultText}>
+          Your body fat percentage is:
+          <Text style={{ fontWeight: "bold" }}>{bodyFat}</Text>
+        </Text>
+
+        <InfoTable
+          tableHead={tableHead}
+          tableData={tableData}
+          tableWidth={tableWidth}
+        />
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   title: { fontSize: 20, marginBottom: 30 },
-  textInput: {
-    backgroundColor: "#e0e0e0",
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingTop: 5,
-    paddingBottom: 5,
-    marginRight: 10,
-  },
+  resultText: { marginTop: 20, fontSize: 16, marginBottom: 20 },
 });

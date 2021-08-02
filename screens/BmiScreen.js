@@ -1,12 +1,25 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { Dimensions, StyleSheet, Text, View } from "react-native";
+import { Table, Row, Rows } from "react-native-table-component";
 import { Input } from "../components/Input";
+import { Button } from "../components/Button";
+import { InfoTable } from "../components/InfoTable";
 
 export const BmiScreen = ({ navigation }) => {
   const [height, setHeight] = React.useState(null);
   const [weight, setWeight] = React.useState(null);
   const [bmi, setBmi] = React.useState(null);
+
+  const tableWidth = Dimensions.get("window").width * 0.9; //0.9 * full width
+
+  const tableHead = ["BMI", "Description"];
+  const tableData = [
+    ["< 18.5", "Underweight."],
+    ["18.5 - 24.9", "Healthy weight range for most adults."],
+    ["25.0 - 29.9", "Overweight."],
+    ["> 30", "Obese."],
+  ];
 
   const calculate = () => {
     let intWeight = parseInt(weight);
@@ -20,6 +33,7 @@ export const BmiScreen = ({ navigation }) => {
       setBmi(calculatedBmi);
     }
   };
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text style={styles.title}>Calculate your BMI!</Text>
@@ -40,9 +54,15 @@ export const BmiScreen = ({ navigation }) => {
 
       <Button title="Calculate BMI" onPress={() => calculate()} />
 
-      <Text style={{ marginTop: 20, fontSize: 18 }}>
+      <Text style={{ marginTop: 20, fontSize: 16, marginBottom: 20 }}>
         Your BMI is: <Text style={{ fontWeight: "bold" }}>{bmi}</Text>
       </Text>
+
+      <InfoTable
+        tableHead={tableHead}
+        tableData={tableData}
+        tableWidth={tableWidth}
+      />
     </View>
   );
 };
