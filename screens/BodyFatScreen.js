@@ -2,6 +2,7 @@ import "react-native-gesture-handler";
 import React from "react";
 import {
   Dimensions,
+  Keyboard,
   ScrollView,
   StyleSheet,
   Switch,
@@ -40,6 +41,7 @@ export const BodyFatScreen = ({ navigation }) => {
     let intNeck = parseInt(neck);
     let intWaist = parseInt(waist);
     let bodyfat;
+
     if (gender) {
       //female
       let intHip = parseInt(hip);
@@ -64,29 +66,31 @@ export const BodyFatScreen = ({ navigation }) => {
   };
 
   const toggleSwitch = () => setGender(previousState => !previousState);
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text style={styles.title}>Calculate your Body Fat!</Text>
 
-      <ScrollView>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginBottom: 20,
-          }}
-        >
-          <Text>Male</Text>
-          <Switch
-            trackColor={{ false: "#767577", true: "#81b0ff" }}
-            thumbColor={gender ? "#f5dd4b" : "#f4f3f4"}
-            ios_backgroundColor="#3e3e3e"
-            onValueChange={toggleSwitch}
-            value={gender}
-          />
-          <Text>Female</Text>
-        </View>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+          marginBottom: 20,
+        }}
+      >
+        <Text>Male</Text>
+        <Switch
+          trackColor={{ false: "#3d4e63", true: "#a6c7e8" }}
+          thumbColor={gender ? "#3257a6" : "#f4f3f4"}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={toggleSwitch}
+          value={gender}
+        />
+        <Text>Female</Text>
+      </View>
 
+      <ScrollView>
         <Input
           title="Height in cm:"
           value={height}
@@ -141,6 +145,6 @@ export const BodyFatScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  title: { fontSize: 20, marginBottom: 30 },
+  title: { fontSize: 20, marginBottom: 30, marginTop: 30 },
   resultText: { marginTop: 20, fontSize: 16, marginBottom: 20 },
 });

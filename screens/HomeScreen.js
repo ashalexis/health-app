@@ -2,20 +2,23 @@ import "react-native-gesture-handler";
 import React from "react";
 import { Text, View } from "react-native";
 import { Button } from "../components/Button";
+import { BigButton } from "../components/BigButton";
 
 export const HomeScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text style={{ fontSize: 30, marginBottom: 20 }}>
+      <Text style={{ fontSize: 30, marginBottom: 10 }}>
         Monitor your health!
       </Text>
-      <Button
-        title="Go to BMI calculator"
-        onPress={() => navigation.navigate("BMI Calculator")}
+      <BigButton
+        title="Mental Health"
+        onPress={() => console.log("test")}
+        imgSrc={require("./images/mental.png")}
       />
-      <Button
-        title="Go to Body Fat calculator"
-        onPress={() => navigation.navigate("Body Fat Calculator")}
+      <BigButton
+        title="Physical Health"
+        onPress={() => navigation.navigate("Physicals")}
+        imgSrc={require("./images/physical.png")}
       />
     </View>
   );
