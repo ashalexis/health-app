@@ -16,7 +16,6 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          headerStyle: { elevation: 0 },
           cardStyle: { backgroundColor: "#fff" },
         }}
       >
