@@ -35,20 +35,20 @@ export const BreathingScreen = ({ navigation }) => {
 
   React.useEffect(() => {
     let interval = null;
-    if (isActive && seconds > 0) {
+    if (isActive && seconds >= 0) {
       interval = setInterval(() => {
         setSeconds(seconds => seconds - 1);
       }, 1000);
-    } else if (seconds == 0 && display == instructions.one) {
+    } else if (seconds < 0 && display == instructions.one) {
       setDisplay(instructions.two);
       setSeconds(4);
-    } else if (seconds == 0 && display == instructions.two) {
+    } else if (seconds < 0 && display == instructions.two) {
       setDisplay(instructions.three);
       setSeconds(4);
-    } else if (seconds == 0 && display == instructions.three) {
+    } else if (seconds < 0 && display == instructions.three) {
       setDisplay(instructions.four);
       setSeconds(4);
-    } else if (seconds == 0 && display == instructions.four) {
+    } else if (seconds < 0 && display == instructions.four) {
       setDisplay(instructions.one);
       setSeconds(4);
     }
