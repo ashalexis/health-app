@@ -11,7 +11,7 @@ import {
 //props: title - string, onPress - fn, imgSrc - string (URL)
 
 const buttonHeight = Dimensions.get("window").height * 0.4;
-const buttonWidth = Dimensions.get("window").width * 0.9;
+const buttonWidth = Dimensions.get("window").width * 0.8;
 
 export const BigButton = props => {
   return (

@@ -12,12 +12,12 @@ export const HomeScreen = ({ navigation }) => {
       </Text>
       <BigButton
         title="Mental Health"
-        onPress={() => console.log("test")}
+        onPress={() => navigation.navigate("Mental health")}
         imgSrc={require("./images/mental.png")}
       />
       <BigButton
         title="Physical Health"
-        onPress={() => navigation.navigate("Physicals")}
+        onPress={() => navigation.navigate("Physical health")}
         imgSrc={require("./images/physical.png")}
       />
     </View>
