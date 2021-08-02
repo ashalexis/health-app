@@ -15,6 +15,8 @@ export const Input = props => {
         }}
       >
         <TextInput
+          accessibilityLabel={props.label}
+          accessibilityHint="input"
           onChangeText={props.onChangeText}
           value={props.value}
           keyboardType="numeric"

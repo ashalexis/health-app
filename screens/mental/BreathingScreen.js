@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { Button } from "../components/Button";
+import { Button } from "../../components/Button";
 
 export const BreathingScreen = ({ navigation }) => {
   const [seconds, setSeconds] = React.useState(0);

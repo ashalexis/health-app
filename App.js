@@ -3,11 +3,11 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { HomeScreen } from "./screens/HomeScreen";
-import { PhysicalScreen } from "./screens/PhysicalScreen";
-import { BmiScreen } from "./screens/BmiScreen";
-import { BodyFatScreen } from "./screens/BodyFatScreen";
-import { MentalScreen } from "./screens/MentalScreen";
-import { BreathingScreen } from "./screens/BreathingScreen";
+import { PhysicalScreen } from "./screens/physical/PhysicalScreen";
+import { BmiScreen } from "./screens/physical/BmiScreen";
+import { BodyFatScreen } from "./screens/physical/BodyFatScreen";
+import { MentalScreen } from "./screens/mental/MentalScreen";
+import { BreathingScreen } from "./screens/mental/BreathingScreen";
 
 const Stack = createStackNavigator();
 

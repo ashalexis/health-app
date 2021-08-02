@@ -9,9 +9,9 @@ import {
   Text,
   View,
 } from "react-native";
-import { Input } from "../components/Input";
-import { Button } from "../components/Button";
-import { InfoTable } from "../components/InfoTable";
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
+import { InfoTable } from "../../components/InfoTable";
 
 export const BodyFatScreen = ({ navigation }) => {
   //false is male, true is female
@@ -86,6 +86,7 @@ export const BodyFatScreen = ({ navigation }) => {
           ios_backgroundColor="#3e3e3e"
           onValueChange={toggleSwitch}
           value={gender}
+          accessibilityLabel="toggle between male and female"
         />
         <Text>Female</Text>
       </View>
@@ -96,13 +97,15 @@ export const BodyFatScreen = ({ navigation }) => {
           value={height}
           onChangeText={text => setHeight(text)}
           unit="cm"
+          label="height input"
         />
 
         <Input
           title="Weight in kg:"
           value={weight}
           onChangeText={text => setWeight(text)}
-          unit="cm"
+          unit="kg"
+          label="weight input"
         />
 
         <Input
@@ -110,6 +113,7 @@ export const BodyFatScreen = ({ navigation }) => {
           value={neck}
           onChangeText={text => setNeck(text)}
           unit="cm"
+          label="neck input"
         />
 
         <Input
@@ -117,6 +121,7 @@ export const BodyFatScreen = ({ navigation }) => {
           value={waist}
           onChangeText={text => setWaist(text)}
           unit="cm"
+          label="waist input"
         />
 
         {gender && (
@@ -125,12 +130,13 @@ export const BodyFatScreen = ({ navigation }) => {
             value={hip}
             onChangeText={text => setHip(text)}
             unit="cm"
+            label="hip input"
           />
         )}
 
         <Button title="Calculate Body Fat %" onPress={() => calculate()} />
         <Text style={styles.resultText}>
-          Your body fat percentage is:
+          Your body fat percentage is:{" "}
           <Text style={{ fontWeight: "bold" }}>{bodyFat}</Text>
         </Text>
 

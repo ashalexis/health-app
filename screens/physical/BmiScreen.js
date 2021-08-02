@@ -2,9 +2,9 @@ import "react-native-gesture-handler";
 import React from "react";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
 import { Table, Row, Rows } from "react-native-table-component";
-import { Input } from "../components/Input";
-import { Button } from "../components/Button";
-import { InfoTable } from "../components/InfoTable";
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
+import { InfoTable } from "../../components/InfoTable";
 
 export const BmiScreen = ({ navigation }) => {
   const [height, setHeight] = React.useState(null);
@@ -43,6 +43,7 @@ export const BmiScreen = ({ navigation }) => {
         value={height}
         onChangeText={text => setHeight(text)}
         unit="cm"
+        label="height input"
       />
 
       <Input
@@ -50,6 +51,7 @@ export const BmiScreen = ({ navigation }) => {
         value={weight}
         onChangeText={text => setWeight(text)}
         unit="kg"
+        label="weight input"
       />
 
       <Button title="Calculate BMI" onPress={() => calculate()} />
